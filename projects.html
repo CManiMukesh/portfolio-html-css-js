@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects — All Projects</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="logo" href="index.html">Yash<span class="accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a class="active" href="projects.html">Projects</a></li>
+        <li><a href="index.html#contact">Get in Touch</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn small" href="index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="projects-page container reveal">
+      <div class="breadcrumbs"><a href="index.html">Home</a> / <strong>Projects</strong></div>
+      <a class="btn small ghost back-home" href="index.html">← Back to Home</a>
+
+      <h1 class="projects-page-title">My Projects</h1>
+      <p class="section-sub">A larger list of projects. Click any project's live link or GitHub link.</p>
+
+      <div class="grid-all-projects">
+        <!-- Repeat many cards similar to the ones on index -->
+        <!-- We'll generate 12 sample cards; replace with your real projects -->
+        <script>
+          // to avoid repetition in HTML, we will create cards using JS inside static page
+        </script>
+        <noscript>
+          <p>Enable JavaScript to see the projects.</p>
+        </noscript>
+      </div>
+
+      <div style="text-align:center;margin:3rem 0;">
+        <a class="btn outline" href="index.html">Back to home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2025 Yash Kapure — Projects</small>
+    </div>
+  </footer>
+
+  <script>
+    // create sample project cards
+    const container = document.querySelector('.grid-all-projects');
+    if (container) {
+      const projects = [
+        'Mini Otio — AI Research Assistant',
+        'EC2 Cloud Cost Analyzer',
+        'OIAS — Online Interview System',
+        'Dragon Sino Group',
+        'Shangrila Petition Platform',
+        'Kolorado Paints',
+        'TechnoKraft',
+        'BEST GST Course',
+        'Affinix Digital',
+        'Octane Apps',
+        'Dr. Manisha Yoga Institute',
+        'Anandlok Ayurveda'
+      ];
+      projects.forEach((p, i) => {
+        const el = document.createElement('article');
+        el.className = 'project-card';
+        el.innerHTML = `
+          <div class="project-screenshot"></div>
+          <div class="project-body">
+            <h3>${p}</h3>
+            <p class="project-desc">Short description for ${p}. Replace this with your project description.</p>
+            <div class="project-meta">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn tiny ghost" href="#">GitHub</a>
+              <a class="btn tiny" href="#">Live Visit</a>
+            </div>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    }
+  </script>
+</body>
+</html>

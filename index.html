@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Yash Kapure (Replica)</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="logo" href="#home">CMM<span class="accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Get in Touch</a></li>
+      </ul>
+      <div class="nav-actions">
+        <!-- <a class="btn small" href="#" title="Download CV">Download CV</a> -->
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO / HOME -->
+    <section id="home" class="hero container reveal">
+      <div class="hero-inner">
+        <div class="profile">
+          <div class="profile-img-wrap">
+            <!-- Use your real image path replacing profile.jpg -->
+            <img class="profile-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=7c1fb5f7a8c9a2c1cc4c9d1ed3a0f5c0" alt="Profile">
+          </div>
+          <div class="available">
+            <span class="dot"></span>
+            <span class="available-text">Available for work</span>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <h1>Hi I’m <span class="name">C Mani Mukesh</span> — <span class="role">Frontend Engineer with Full-Stack Expertise.</span></h1>
+          <p class="hero-sub">I build fast, accessible, and robust web experiences using React, Tailwind CSS, and a dash of engineering pragmatism. I design & implement scalable UI, performant frontends and production-ready integrations.</p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#contact">Get In Touch</a>
+            <a class="btn ghost" href="#" download>Download CV</a>
+            <div class="socials">
+              <a target="_blank" rel="noopener" href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a target="_blank" rel="noopener" href="#" title="GitHub"><i class="fab fa-github"></i></a>
+              <a target="_blank" rel="noopener" href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about container reveal">
+      <h2 class="section-title">About Me</h2>
+      <p class="about-text">My name is C Mani Mukesh, and I'm a frontend & full-stack engineer with several years of real world experience building robust web apps. I primarily use React with Tailwind CSS and Node.js on the backend. I love turning complex product problems into elegant, usable interfaces. I design accessible UI components, implement performant frontend architecture and ship production code.</p>
+    </section>
+
+    <!-- PROJECTS (featured) -->
+    <section id="projects" class="projects container reveal">
+      <div class="section-head">
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-sub">A collection of projects I've worked on, showcasing both frontend and full-stack development.</p>
+      </div>
+
+      <div class="project-grid">
+        <!-- Four featured project cards -->
+        <article class="project-card">
+          <div class="project-screenshot" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Mini Otio — AI Research Assistant</h3>
+            <p class="project-desc">A compact AI-powered research assistant for summarization and quick search across docs.</p>
+            <div class="project-meta">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Tailwind</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn tiny ghost" href="#" aria-label="Open GitHub">GitHub</a>
+              <a class="btn tiny" href="#" aria-label="Live demo">Live Visit</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-screenshot"></div>
+          <div class="project-body">
+            <h3>EC2 Cloud Cost Analyzer</h3>
+            <p class="project-desc">Tool to analyze AWS EC2 costs and provide optimization suggestions.</p>
+            <div class="project-meta">
+              <span class="tag">React</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Charts</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn tiny ghost" href="#">GitHub</a>
+              <a class="btn tiny" href="#">Live Visit</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-screenshot"></div>
+          <div class="project-body">
+            <h3>Online Interview Assessment (OIAS)</h3>
+            <p class="project-desc">A system to automate coding and behavioral assessments for interview pipelines.</p>
+            <div class="project-meta">
+              <span class="tag">React</span>
+              <span class="tag">Express</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn tiny ghost" href="#">GitHub</a>
+              <a class="btn tiny" href="#">Live Visit</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-screenshot"></div>
+          <div class="project-body">
+            <h3>Dragon Sino Group</h3>
+            <p class="project-desc">Full-stack product for a corporate client including admin dashboards and public pages.</p>
+            <div class="project-meta">
+              <span class="tag">Next.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn tiny ghost" href="#">GitHub</a>
+              <a class="btn tiny" href="#">Live Visit</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="more-projects">
+        <a class="btn outline" href="projects.html">View More Projects</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact container reveal">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-sub">Feel free to reach out — you can also email me directly at <a href="mailto:hello@example.com">mani.vespucci@gmail.com</a></p>
+
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="form-row">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required placeholder="Your name">
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required placeholder="you@domain.com">
+          </label>
+        </div>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="6" required placeholder="Tell me about your project..."></textarea>
+        </label>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Submit</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© 2025 CMM — Built with ❤️</small>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
