@@ -1,17 +1,34 @@
-// Smooth scroll for nav links
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', function(e){
-    // if link is just "#", ignore
-    const href = this.getAttribute('href');
-    if(!href || href === '#') return;
-    const target = document.querySelector(href);
-    if(target){
-      e.preventDefault();
-      target.scrollIntoView({behavior:'smooth', block:'start'});
-      // update URL hash (optional)
-      history.replaceState(null, '', href);
-    }
+// Smooth scroll for nav links and "View More Projects" anchor scrolling
+document.addEventListener('DOMContentLoaded', function () {
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href') || '';
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
+
+  // Highlight nav links based on visible section
+  const sections = document.querySelectorAll('section[id]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+      if (link) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      }
+    });
+  }, { threshold: [0.45] });
+
+  sections.forEach(s => observer.observe(s));
 });
 
 // IntersectionObserver for reveal animations (subtle fade + slide)
@@ -50,21 +67,35 @@ if(form){
 
 // Projects page: nothing else required (cards generated in projects.html)
 
-// Small enhancement: add "active" link highlight on scroll
-const sections = document.querySelectorAll('section[id]');
-function onScrollActiveNav(){
-  const scrollY = window.pageYOffset;
-  sections.forEach(sec => {
-    const offsetTop = sec.offsetTop - 80;
-    const height = sec.offsetHeight;
-    const id = sec.getAttribute('id');
-    const navLink = document.querySelector('.nav-links a[href="#'+id+'"]');
-    if(scrollY >= offsetTop && scrollY < offsetTop + height){
-      if(navLink) navLink.classList.add('active');
-    } else {
-      if(navLink) navLink.classList.remove('active');
+// Theme toggle: persist preference and respect system preference
+(function () {
+  const KEY = 'theme-preference';
+  const toggle = () => {
+    const isDark = document.body.classList.toggle('dark');
+    updateButtonIcon(isDark);
+    try { localStorage.setItem(KEY, isDark ? 'dark' : 'light'); } catch (e) {}
+  };
+  const updateButtonIcon = (isDark) => {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    const icon = btn.querySelector('i');
+    if (!icon) return;
+    icon.classList.remove('fa-moon','fa-sun');
+    icon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // initialize theme from localStorage or system preference
+    let saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    if (saved === 'dark') document.body.classList.add('dark');
+    else if (saved === 'light') document.body.classList.remove('dark');
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
     }
+    updateButtonIcon(document.body.classList.contains('dark'));
+
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.addEventListener('click', toggle);
   });
-}
-window.addEventListener('scroll', onScrollActiveNav, {passive:true});
-onScrollActiveNav();
+})();

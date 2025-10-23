@@ -11,6 +11,17 @@
   --container:1100px;
   --shadow: 0 6px 18px rgba(16,24,40,0.06);
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --space-xxs:4px;
+  --space-xs:8px;
+  --space-sm:12px;
+  --space-md:16px;
+  --space-lg:24px;
+  --space-xl:32px;
+  --space-xxl:48px;
+  --gap:20px;
+  --container-max:1100px;
+  --radius:10px;
+  --muted:#6b7280;
 }
 
 *{box-sizing:border-box}
@@ -21,8 +32,9 @@ body{
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  line-height:1.5;
+  line-height:1.6;
   font-size:16px;
+  
 }
 
 /* layout container */
@@ -33,13 +45,39 @@ body{
 }
 
 /* header nav */
-.site-header{position:sticky;top:0;background:rgba(255,255,255,0.75);backdrop-filter: blur(6px);z-index:60;border-bottom:1px solid rgba(0,0,0,0.03)}
+.site-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  width:100%;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter: blur(6px);
+  z-index:60;
+  border-bottom:1px solid rgba(0,0,0,0.03);
+}
+
+/* ensure the inner container in the header is centered and sized like other containers */
+.site-header .container{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 20px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* keep page content visible below fixed header */
+main{padding-top:72px}
+
+/* keep existing nav rules but ensure height fills header container */
 .nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:1rem;
-  height:64px;
+  height:100%;
 }
 .logo{font-weight:700;color:var(--primary);text-decoration:none}
 .logo .accent{color:var(--accent)}
@@ -60,7 +98,7 @@ body{
   border:none;
   cursor:pointer;
 }
-.btn.primary{background:var(--primary);color:white}
+.btn.primary{background:var(--primary);color:rgb(255, 255, 255)}
 .btn.ghost{background:white;border:1px solid rgba(16,24,40,0.06);color:var(--primary)}
 .btn.outline{background:transparent;border:1px solid rgba(16,24,40,0.08);color:var(--primary)}
 .btn.small{padding:6px 10px;border-radius:8px}
@@ -68,10 +106,15 @@ body{
 
 /* Hero */
 .hero{padding:60px 0 40px}
-.hero-inner{display:flex;align-items:center;gap:48px;flex-wrap:wrap;justify-content:center}
+.hero-inner{display:flex;flex-direction:column;
+  gap:var(--gap);
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  text-align:center;}
 .profile{display:flex;flex-direction:column;align-items:center;gap:12px}
 .profile-img-wrap{
-  width:120px;height:120px;border-radius:999px;padding:6px;border:1px solid rgba(16,24,40,0.05);display:flex;align-items:center;justify-content:center;background:transparent;
+  width:160px;height:160px;border-radius:999px;padding:6px;border:1px solid rgba(16,24,40,0.05);display:flex;align-items:center;justify-content:center;background:transparent;
 }
 .profile-img{
   width:100%;height:100%;object-fit:cover;border-radius:999px;display:block;
@@ -122,12 +165,57 @@ body{
 
 /* contact form */
 .contact{padding:40px 0 80px}
-.contact-form{max-width:820px;margin:0 auto}
-.form-row{display:flex;gap:14px}
-.form-row label{flex:1;display:flex;flex-direction:column;gap:8px}
-label span{font-weight:600;font-size:.9rem}
-input, textarea{border:1px solid rgba(16,24,40,0.08);padding:12px;border-radius:8px;font-size:1rem;outline:none}
-input:focus,textarea:focus{box-shadow:0 6px 18px rgba(16,24,40,0.06);border-color:rgba(16,24,40,0.08)}
+.contact-form{
+  max-width:760px;
+  margin:var(--space-md) auto 0;
+  padding:0 var(--space-sm);
+}
+.contact-form label{
+  display:block;
+  width:100%;
+  margin:0 0 var(--space-sm);
+  font-weight:600;
+}
+.contact-form .form-row{display:flex; gap:var(--space-md); align-items:flex-start}
+.contact-form .form-row label{margin:0} /* keep side-by-side labels compact */
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+  font:inherit;
+  color:inherit;
+  background:transparent;
+}
+
+/* Make the message textarea larger and visually comfortable */
+.contact-form textarea{
+  min-height:220px; /* larger message area */
+  max-height:520px;
+  resize:vertical;
+  line-height:1.5;
+  padding:14px;
+}
+
+/* Center the submit button */
+.form-actions{
+  margin-top:var(--space-md);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.form-actions .btn{
+  min-width:140px;
+}
+
+/* Responsive: stack inputs on narrow screens */
+@media (max-width:720px){
+  .contact-form .form-row{flex-direction:column}
+  .contact-form{padding:0 var(--space-xs)}
+}
 
 /* footer */
 .site-footer{padding:28px 0;text-align:center;border-top:1px solid rgba(0,0,0,0.03);margin-top:40px;color:var(--muted)}
@@ -153,3 +241,50 @@ input:focus,textarea:focus{box-shadow:0 6px 18px rgba(16,24,40,0.06);border-colo
   .section-sub{text-align:center}
   .about-text{padding:0 8px}
 }
+
+/* Dark theme overrides (toggle adds .dark to <body>) */
+body.dark{
+  --bg:#071021;
+  --text:#e6eef8;
+  --muted:#98a3b3;
+  --accent:#ff6b96;
+  --primary:#fff;
+  --green:#34d399;
+  --card:#071826;
+  --glass: rgba(255,255,255,0.03);
+  --shadow: 0 10px 30px rgba(2,6,23,0.6);
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* adjust card and project colors in dark mode */
+body.dark .project-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-color:rgba(255,255,255,0.03)}
+body.dark .project-screenshot{background-image:linear-gradient(135deg,#0b1420 0%,#07121a 100%)}
+body.dark .nav-links a{color:var(--muted)}
+body.dark .nav-links a:hover, body.dark .nav-links a.active{background:rgba(255,255,255,0.02); color:var(--text)}
+body.dark input, body.dark textarea{background:rgba(255,255,255,0.02); color:var(--text); border-color:rgba(255,255,255,0.04)}
+
+/* Theme toggle button (bottom-right) */
+.theme-toggle{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:46px;
+  height:46px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--card);
+  color:var(--text);
+  box-shadow:0 8px 24px rgba(2,6,23,0.08);
+  border:1px solid rgba(16,24,40,0.05);
+  cursor:pointer;
+  z-index:1200;
+  transition:transform 180ms ease, background 200ms ease, color 200ms ease;
+}
+.theme-toggle:hover{transform:translateY(-3px)}
+.theme-toggle i{font-size:18px; line-height:1}
+
+/* dark-mode appearance for the toggle */
+body.dark .theme-toggle{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); color:var(--text); border-color:rgba(255,255,255,0.04)}
