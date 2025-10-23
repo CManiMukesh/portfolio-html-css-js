@@ -2,99 +2,261 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Projects — All Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Projects</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root {
+      --text: #1a1a1a;
+      --subtext: #555;
+      --border: #e6e6e6;
+      --bg-card: #fff;
+      --accent: #000;
+      --radius: 12px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: #fafafa;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Breadcrumb */
+    .breadcrumbs {
+      font-size: 0.9rem;
+      color: var(--subtext);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumbs a {
+      color: var(--subtext);
+      text-decoration: none;
+    }
+
+    /* Back to Home */
+    .back-home {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.4rem 0.8rem;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: all 0.2s ease;
+    }
+    .back-home:hover {
+      background: #f3f3f3;
+    }
+
+    /* Titles */
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--subtext);
+      margin-bottom: 3rem;
+    }
+
+    /* Grid Layout */
+    .grid-projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Project Card */
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .project-thumb {
+      width: 100%;
+      height: 180px;
+      background: #eee;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project-body {
+      padding: 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-body h3 {
+      font-size: 1.05rem;
+      margin: 0 0 0.4rem;
+    }
+
+    .project-desc {
+      flex: 1;
+      font-size: 0.92rem;
+      color: var(--subtext);
+      margin-bottom: 0.9rem;
+    }
+
+    .project-tags {
+      margin-bottom: 0.8rem;
+    }
+    .tag {
+      display: inline-block;
+      background: #f2f2f2;
+      color: var(--text);
+      border-radius: 5px;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      margin-right: 0.4rem;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: auto;
+    }
+
+    .btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.55rem 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+    .btn:hover {
+      background: #f3f3f3;
+    }
+    .btn.black {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+    }
+    .btn.black:hover {
+      background: #333;
+    }
+
+    @media (max-width: 600px) {
+      .grid-projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <nav class="nav container">
-      <a class="logo" href="index.html">Yash<span class="accent">.</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a class="active" href="projects.html">Projects</a></li>
-        <li><a href="index.html#contact">Get in Touch</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a class="btn small" href="index.html#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
+  <div class="container">
+    <div class="breadcrumbs"><a href="index.html">Home</a> / <strong>Projects</strong></div>
+    <a href="index.html" class="back-home"><i class="fa fa-arrow-left"></i> Back to Home</a>
 
-  <main>
-    <section class="projects-page container reveal">
-      <div class="breadcrumbs"><a href="index.html">Home</a> / <strong>Projects</strong></div>
-      <a class="btn small ghost back-home" href="index.html">← Back to Home</a>
+    <h1>My Projects</h1>
+    <p class="section-sub">A collection of projects I’ve worked on, showcasing my skills in frontend and full-stack development.</p>
 
-      <h1 class="projects-page-title">My Projects</h1>
-      <p class="section-sub">A larger list of projects. Click any project's live link or GitHub link.</p>
-
-      <div class="grid-all-projects">
-        <!-- Repeat many cards similar to the ones on index -->
-        <!-- We'll generate 12 sample cards; replace with your real projects -->
-        <script>
-          // to avoid repetition in HTML, we will create cards using JS inside static page
-        </script>
-        <noscript>
-          <p>Enable JavaScript to see the projects.</p>
-        </noscript>
-      </div>
-
-      <div style="text-align:center;margin:3rem 0;">
-        <a class="btn outline" href="index.html">Back to home</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <small>© 2025 Yash Kapure — Projects</small>
-    </div>
-  </footer>
+    <div class="grid-projects" id="projectsGrid"></div>
+  </div>
 
   <script>
-    // create sample project cards
-    const container = document.querySelector('.grid-all-projects');
-    if (container) {
-      const projects = [
-        'Mini Otio — AI Research Assistant',
-        'EC2 Cloud Cost Analyzer',
-        'OIAS — Online Interview System',
-        'Dragon Sino Group',
-        'Shangrila Petition Platform',
-        'Kolorado Paints',
-        'TechnoKraft',
-        'BEST GST Course',
-        'Affinix Digital',
-        'Octane Apps',
-        'Dr. Manisha Yoga Institute',
-        'Anandlok Ayurveda'
-      ];
-      projects.forEach((p, i) => {
-        const el = document.createElement('article');
-        el.className = 'project-card';
-        el.innerHTML = `
-          <div class="project-screenshot"></div>
-          <div class="project-body">
-            <h3>${p}</h3>
-            <p class="project-desc">Short description for ${p}. Replace this with your project description.</p>
-            <div class="project-meta">
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-            </div>
-            <div class="project-actions">
-              <a class="btn tiny ghost" href="#">GitHub</a>
-              <a class="btn tiny" href="#">Live Visit</a>
-            </div>
+    const projects = [
+      {
+        title: "Mini Otio — AI Research Assistant",
+        desc: "An AI-powered research assistant built with Next.js and OpenAI API integration.",
+        img: "https://via.placeholder.com/400x200",
+        tags: ["Next.js", "OpenAI", "Tailwind CSS"],
+        github: "#",
+        live: "#"
+      },
+      {
+        title: "EC2 Cloud Cost Analyzer",
+        desc: "Visualizes EC2 instance usage and helps optimize AWS cloud costs.",
+        img: "https://via.placeholder.com/400x200",
+        tags: ["React", "AWS", "Node.js"],
+        github: "#",
+        live: "#"
+      },
+      {
+        title: "Online Interview Assessment System (OIAS)",
+        desc: "A platform for structured online assessments and candidate evaluation.",
+        img: "https://via.placeholder.com/400x200",
+        tags: ["React", "MongoDB", "Express"],
+        github: "#",
+        live: "#"
+      },
+      {
+        title: "Dragon Sino Group",
+        desc: "Corporate website for an international trading group.",
+        img: "https://via.placeholder.com/400x200",
+        tags: ["React", "Tailwind CSS"],
+        github: "#",
+        live: "#"
+      },
+      {
+        title: "Shangri-La Petition Platform",
+        desc: "Public platform enabling online petitions for social causes.",
+        img: "https://via.placeholder.com/400x200",
+        tags: ["Next.js", "MongoDB"],
+        github: "#",
+        live: "#"
+      },
+      {
+        title: "Kolorado Paints",
+        desc: "Website for a modern paint brand showcasing products and creativity.",
+        img: "https://via.placeholder.com/400x200",
+        tags: ["React", "CSS"],
+        github: "#",
+        live: "#"
+      }
+    ];
+
+    const grid = document.getElementById("projectsGrid");
+
+    projects.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "project-card";
+      card.innerHTML = `
+        <div class="project-thumb" style="background-image:url('${p.img}')"></div>
+        <div class="project-body">
+          <h3>${p.title}</h3>
+          <p class="project-desc">${p.desc}</p>
+          <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+          <div class="project-actions">
+            <a href="${p.github}" target="_blank" class="btn"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="${p.live}" target="_blank" class="btn black">Live Visit</a>
           </div>
-        `;
-        container.appendChild(el);
-      });
-    }
+        </div>
+      `;
+      grid.appendChild(card);
+    });
   </script>
 </body>
 </html>
